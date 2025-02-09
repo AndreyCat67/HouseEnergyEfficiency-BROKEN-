@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../static/css/style.css"> 
+  <title>Home energy efficiency</title>
+</head>
+<body>
+  <header class="header">
+    <div class="header__text">
+      <h1>Calculate the energy efficiency of your house!</h1>
+      <p>Solve the problem of excessive power usage by yourself!</p>
+    </div>
+  </header>
+  <main>
+    {% block content %}
+    <h2 class="main__title main__title--margin">Your home's energy efficiency:</h2>
+    <div class="main__rez" id="end">
+        {%if result <= 150%}
+        <img class="rez__img" src="../../static/img/planet_good.svg" alt="">
+        <span>Your result is {{result}} kilowatts per hour!</span>
+        <span>Your house has AMAZING energy efficiency!</span>
+        {%elif result >= 151 and result < 300%}
+        <img class="rez__img" src="../../static/img/planet_medium.svg" alt="">
+        <span>Your result is {{result}} kilowatts per hour!</span>
+        <span>Your house has a medium energy efficiency!</span>
+        {%elif result >= 300%}
+        <img class="rez__img" src="../../static/img/planet_bad.svg" alt="">
+        <span>Your result is {{result}} kilowatts per hour!</span>
+        <span>Your house has bad energy efficiency!</span>
+        <span>Do you want to help the environment? Fill out the form and we will build an eco-friendly build for you!</span>
+        <a class ="main-link" href = "{{url for ('form')}}">Fill out form</a>
+        {%endif%}
+    </div>
+    {% endblock %}
+  </main>
+  <footer>
+
+  </footer>
+</body>
+</html>
